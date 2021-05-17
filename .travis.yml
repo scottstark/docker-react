@@ -1,14 +1,23 @@
 language: generic
+
+# we need super user premissions
 sudo: required
+
+# tell Travis we need a copy of docker running
 services:
   - docker
 
+# tell Travis to build our image using Dockerfile.dev
 before_install:
   - docker build -t scottstark/docker-react -f Dockerfile.dev .
 
+# tell Travis to run our test suite in CI-mode
+# tests will run only once instead of launching the watcher.
+# any return code other than 0 Travis will assume as failure
 script:
   - docker run -e CI=true scottstark/docker-react npm run test
 
+# tell Travis how to deploy our code to AWS
 deploy:
   provider: elasticbeanstalk
   region: "us-east-1"
