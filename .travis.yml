@@ -1,6 +1,4 @@
 language: generic
-
-# we need super user premissions
 sudo: required
 
 # tell Travis we need a copy of docker running
