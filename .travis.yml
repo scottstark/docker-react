@@ -15,7 +15,7 @@ before_install:
 script:
   - docker run -e CI=true scottstark/docker-react npm run test
 
-# tell Travis how to deploy our code to AWS
+# tell Travis how to deploy our application to AWS
 deploy:
   provider: elasticbeanstalk
   region: "us-east-1"
